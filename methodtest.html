@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+	<title>method test</title>
+</head>
+<body>
+    <h1>method test</h1>
+    <form id="form1">
+        <label for="id">id:</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="article_name">article name:</label><br>
+        <input type="text" id="article_name" name="article_name"><br>
+        <label for="article_text">article text:</label><br>
+        <textarea id="article_text" name="article_text"></textarea><br>
+        <input type="date" id="date" name="date" hidden>
+    </form>
+
+    <br>
+    <button id="postBtn">POST</button>
+    <button id="getBtn">GET</button>
+    <button id="putBtn">PUT</button>
+    <button id="delBtn">DELETE</button>
+
+    <br>
+    <p>out put here: </p>
+    <br>
+    <output id="response"></output>
+
+
+    <script>
+        let form = document.getElementById('form1')
+        let output = document.getElementById('response')
+        function getFormData() {
+            let formData = {}
+            formData.id = form.id.value
+            formData.articleName = form.article_name.value
+            formData.articleText = form.article_text.value
+            if (formData.id == "" || formData.articleName == "" || formData.articleText == "") {
+                alert('Please fill in all fields in the form!')
+                return false
+            }
+            formData.date = new Date()
+            return formData
+        }
+
+        async function printResponse(response) {
+            output.innerHTML = `HTTP/1.1 ${response.status} ${response.statusText}<br><br>`
+
+            let headers = response.headers
+            for (let key of headers.keys()){
+                output.innerHTML += `${key}: ${headers.get(key)}<br>`
+            }
+            output.innerHTML += '<br>'
+
+            let body = await response.text()
+            output.innerHTML += body
+        }
+
+        document.getElementById('postBtn').addEventListener('click', async (event) => {
+            let endpoint = 'https://httpbin.org/post'
+            let formData = getFormData()
+            if (!formData) {
+                output.innerHTML = ''
+                return
+            }
+            let response = await fetch(endpoint, {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            printResponse(response)
+        })
+
+        document.getElementById('getBtn').addEventListener('click', async (event) => {
+            let endpoint = 'https://httpbin.org/get?'
+            let formData = getFormData()
+            if (!formData) {
+                output.innerHTML = ''
+                return
+            }
+            for (let key in formData) {
+                endpoint += `${key}=${formData[key]}&`
+            }
+            endpoint = endpoint.substring(0, endpoint.length - 1)
+            let response = await fetch(endpoint, {
+                method: 'GET'
+            })
+            printResponse(response)
+        })
+
+        document.getElementById('putBtn').addEventListener('click', async (event) => {
+            let endpoint = 'https://httpbin.org/put'
+            let formData = getFormData()
+            if (!formData) {
+                output.innerHTML = ''
+                return
+            }
+            let response = await fetch(endpoint, {
+                method: 'PUT',
+                body: JSON.stringify(formData)
+            })
+            printResponse(response)
+        })
+
+        document.getElementById('delBtn').addEventListener('click', async (event) => {
+            let endpoint = 'https://httpbin.org/delete?'
+            let formData = getFormData()
+            if (!formData) {
+                output.innerHTML = ''
+                return
+            }
+            for (let key in formData) {
+                endpoint += `${key}=${formData[key]}&`
+            }
+            endpoint = endpoint.substring(0, endpoint.length - 1)
+            let response = await fetch(endpoint, {
+                method: 'DELETE'
+            })
+            printResponse(response)
+        })
+    </script>
+</body>
