@@ -2,29 +2,51 @@
 <head>
     <meta charset="utf-8" />
 	<title>method test</title>
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #article_text {
+            width: 300px;
+            height: 200px;
+            resize: none;
+        }
+
+        #form1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>method test</h1>
-    <form id="form1">
-        <label for="id">id:</label><br>
-        <input type="text" id="id" name="id"><br>
-        <label for="article_name">article name:</label><br>
-        <input type="text" id="article_name" name="article_name"><br>
-        <label for="article_text">article text:</label><br>
-        <textarea id="article_text" name="article_text"></textarea><br>
-        <input type="date" id="date" name="date" hidden>
-    </form>
+    <main>
+        <h1>Method Test</h1>
+        <form id="form1">
+            <label for="id">id:</label><br>
+            <input type="text" id="id" name="id"><br>
+            <label for="article_name">article name:</label><br>
+            <input type="text" id="article_name" name="article_name"><br>
+            <label for="article_text">article text:</label><br>
+            <textarea id="article_text" name="article_text"></textarea><br>
+            <input type="date" id="date" name="date" hidden>
+        </form>
 
-    <br>
-    <button id="postBtn">POST</button>
-    <button id="getBtn">GET</button>
-    <button id="putBtn">PUT</button>
-    <button id="delBtn">DELETE</button>
+        <br>
+        <div>
+            <button id="postBtn">POST</button>
+            <button id="getBtn">GET</button>
+            <button id="putBtn">PUT</button>
+            <button id="delBtn">DELETE</button>
+        </div>
 
-    <br>
-    <p>out put here: </p>
-    <br>
-    <output id="response"></output>
+        <br>
+        <h3>Response: </h3>
+        <br>
+        <pre id="response"></pre>
+    </main>
 
 
     <script>
