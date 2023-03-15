@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTQDXXL9DZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-PTQDXXL9DZ');
+    </script>
+    <meta charset="utf-8" />
+	<title>dialogs</title>
+</head>
+<body>
+    <h1>Native Dialog</h1>
+    <button id="alert-button">alert</button>
+    <button id="confirm-button">confirm</button>
+    <button id="prompt-button">prompt</button>
+    <button id="safer-prompt-button">safer prompt</button>
+
+    <br>
+    
+    <p>output here:</p>
+    <output id="output-1"> </output>
+
+    <script>
+        let alertButton = document.getElementById('alert-button')
+        alertButton.addEventListener('click', (event) => {
+            alert("you hit the alert button!")
+        })
+
+        let outputEl = document.getElementById("output-1")
+        let confirmButton = document.getElementById('confirm-button')
+        confirmButton.addEventListener('click', (event) => {
+            outputEl.innerHTML = `The value returned by the confirm method is : ${confirm('for real?')}`
+        })
+
+        let promptButton = document.getElementById('prompt-button')
+        promptButton.addEventListener('click', (event) => {
+            let userInput = prompt("Enter something")
+            if (userInput) {
+                outputEl.innerHTML = `The value entered by the user is : ${userInput}`
+            }
+            else {
+                outputEl.innerHTML = "User didn't enter anything"
+            }
+        })
+
+        let saferPromptButton = document.getElementById('safer-prompt-button')
+        saferPromptButton.addEventListener('click', (event) => {
+            let userInput = prompt("Enter something")
+            userInput = DOMPurify.sanitize(userInput);
+            if (userInput) {
+                outputEl.innerHTML = `The value entered by the user is : ${userInput}`
+            }
+            else {
+                outputEl.innerHTML = "User didn't enter anything"
+            }
+        })
+    </script>
+    <script type="text/javascript" src="DOMPurify-main/dist/purify.min.js"></script>
+</body>

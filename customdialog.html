@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTQDXXL9DZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-PTQDXXL9DZ');
+    </script>
+    <meta charset="utf-8" />
+	<title>custom dialogs</title>
+</head>
+<body>
+    <h1>Custom Dialog</h1>
+    <button id="alert-button"">alert</button>
+    <dialog close id="alert-dialog">
+        <p>you hit the alert button!</p>
+        <form method="dialog">
+          <button>OK</button>
+        </form>
+    </dialog>
+
+    <button id="confirm-button">confirm</button>
+    <dialog close id="confirm-dialog">
+        <p>for real?</p>
+        <form method="dialog">
+          <button id="yes-button">yes</button>
+          <button id="no-button">no</button>
+        </form>
+    </dialog>
+
+    <button id="prompt-button">prompt</button>
+    <dialog close id="prompt-dialog">
+        <form method="dialog">
+            <label>input something here:<input id="prompt-input"></label>
+            <button id="submit-button">submit</button>
+        </form>
+    </dialog>
+
+    <br>
+    <p>out put here: </p>
+    <output id="output-1"></output>
+
+    <script type="module">
+        import {triggerAlert, triggerConfirm, triggerPrompt} from './customdialog.js'
+        document.getElementById('alert-button').addEventListener('click', (event) => {
+            triggerAlert()
+        })
+        document.getElementById('confirm-button').addEventListener('click', (event) => {
+            triggerConfirm()
+        })
+        document.getElementById('prompt-button').addEventListener('click', (event) => {
+            triggerPrompt()
+        })
+    </script>
+</body>

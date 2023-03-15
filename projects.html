@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTQDXXL9DZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-PTQDXXL9DZ');
+    </script>
+	<meta charset="utf-8" />
+	<title>Bruce Zhou</title>
+    <link rel="icon" type="image/x-icon" href="image/icon.ico">
+    <link rel="stylesheet" href="mystyle.css">
+    
+
+</head>
+<style>
+    @font-face {
+        font-family: Oswald;
+        src: url(assets/fonts/Oswald-VariableFont_wght.ttf);
+     }
+</style>
+<body class="two_sides">
+    <header>
+        <h1 id="title">TheBruz</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Main</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <p class="project_description">
+            Project1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <img class="project_preview" alt="a preview for the current project" src="assets/photos/project1.png">
+
+        <a href="https://www.thebruz.com/rent_collector" class="project_link">Link to Project</a>
+    </main>
+
+
+    <aside>
+        <ul class="project_list">
+            <li><p href="" class="active" id="project-1">Project 1</p></li>
+            <li><p href="" id="project-2">Project 2</p></li>
+            <li><p href="" id="project-3">Project 3</p></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>&copy Bruce Zhou 2023</p>
+    </footer>
+
+    <script>
+        let project1 = document.getElementById('project-1')
+        let project2 = document.getElementById('project-2')
+        let project3 = document.getElementById('project-3')
+        let projectDescription = document.querySelector('.project_description')
+        let projectPreview = document.querySelector('.project_preview')
+        let projectLink = document.querySelector('.project_link')
+
+        project1.addEventListener('click', (event) => {
+            projectDescription.innerHTML = "Project1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            projectPreview.src = "assets/photos/project1.png"
+            projectLink.href = "https://www.thebruz.com/rent_collector"
+            project1.className = "active"
+            project2.className = ""
+            project3.className = ""
+        })
+
+        project2.addEventListener('click', (event) => {
+            projectDescription.innerHTML = "Project2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            projectPreview.src = "assets/photos/project2.jpg"
+            projectLink.href = "https://www.thebruz.com/user_info_collector"
+            project1.className = ""
+            project2.className = "active"
+            project3.className = ""
+        })
+
+        project3.addEventListener('click', (event) => {
+            projectDescription.innerHTML = "Project3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            projectPreview.src = "assets/photos/project3.jpg"
+            projectLink.href = "https://earnest-melomakarona-5a9f93.netlify.app/"
+            project1.className = ""
+            project2.className = ""
+            project3.className = "active"
+        })
+    </script>
+</body>
+
+</html>

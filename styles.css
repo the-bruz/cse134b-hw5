@@ -1,0 +1,55 @@
+body {
+    background-color:rgb(115, 149, 194);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Arial";
+}
+
+ul {
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+
+h1 {
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    margin: 3vh;
+    background-color: #add8e6e7;
+    text-align: center;
+    width: 10vw;
+    height: auto;
+    color: white;
+}
+
+li > p {
+    word-break: break-all;
+    white-space: normal;
+}
+
+li > button {
+    margin: 0.5vw;
+}
+
+#add-button {
+    height: 4vh;
+    width: 5vw;
+    border-style:double;
+    border-radius: 15px;
+    border-color: #add8e6e7;
+}
+
+dialog {
+    padding: 50px;
+    text-align: center;
+}
+
+textarea {
+    width: 90%;
+    height: 10vh;
+    resize: none;
+}

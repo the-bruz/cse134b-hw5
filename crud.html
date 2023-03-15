@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTQDXXL9DZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-PTQDXXL9DZ');
+    </script>
+    <meta charset="utf-8" />
+	<title>crud</title>
+</head>
+<body>
+    <h1>blog posts</h1>
+    <ul id="blog-list">
+    </ul>
+    <button id="add-button">add blog</button>
+
+    <dialog close id="new-blog">
+        <form method="dialog" id="blog-form">
+            <label>Post Title: <input name="postTitle" type="text" required></label>
+            <br>
+            <label>Post Date: <input name="postDate" type="date" required></label>
+            <br>
+            <label>Post Summary: <textarea name="postSummary" required></textarea></label>
+            <br>
+            <input type="submit" id="submit-button">
+            <button id="close">cancel</button>
+        </form>
+    </dialog>
+
+    <dialog close id="confirm-dialog">
+        <p>Do you want to delete this blog?</p>
+        <form method="dialog">
+          <button id="yes-button">yes</button>
+          <button id="no-button">no</button>
+        </form>
+    </dialog>
+
+    <script type="module">
+        import {newBlog, addToLocalStorage, deleteById, showLocalStorage} from "./blog.js"
+        newBlog("add-button", "new-blog", 'blog-form', 'blog-list', 'close')
+        showLocalStorage('blog-list')
+    </script>
+</body>
